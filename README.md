@@ -2,7 +2,7 @@
 
 A standalone FreshRSS extension that turns **Normal view** into an image-card grid with a focused article reader. Inspired by Inoreader, built with vanilla JavaScript and CSS, and tested against **FreshRSS 1.30.1**.
 
-![Desktop grid with fictional articles and illustrative stock photos](docs/screenshots/desktop-grid.png)
+![Desktop grid with fictional articles and illustrative stock photos](docs/screenshots/desktop-eight-photos.png)
 
 ## Features
 
@@ -20,7 +20,7 @@ A standalone FreshRSS extension that turns **Normal view** into an image-card gr
 
 <img src="docs/screenshots/mobile-grid.png" alt="Mobile card list at 390 pixels wide" width="260"> <img src="docs/screenshots/mobile-grid-wide.png" alt="Two-column mobile card list at 430 pixels wide" width="286"> <img src="docs/screenshots/mobile-reader.png" alt="Full-screen mobile article reader" width="260">
 
-Mobile card lists at two widths, followed by the article reader. Screenshots use fictional articles and four illustrative stock photos. See [photo credits and demo details](docs/demo/README.md). No personal feeds or account data are shown.
+Mobile card lists at two widths, followed by the article reader. Screenshots use fictional articles and eight illustrative stock photos. See [photo credits and demo details](docs/demo/README.md). No personal feeds or account data are shown.
 
 ## Requirements
 

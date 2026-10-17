@@ -428,9 +428,10 @@ try:
                 break
             time.sleep(.05)
         check("document.querySelectorAll('.ig-card').length===8", 'editorial demo uses eight fictional stories')
+        check("new Set([...document.querySelectorAll('.ig-media img')].map(img=>img.src)).size===8", 'each editorial card uses a different photo')
         evaluate("Promise.all([...document.images].map(img=>{img.loading='eager';return img.decode().catch(()=>{});})).then(()=>document.fonts.ready)")
-        check("[...document.querySelectorAll('.ig-media img')].every(img=>img.complete && img.naturalWidth>=1280)", 'four local licensed photos load at full demo resolution')
-        for width, height, filename in [(1440,1000,'desktop-grid.png'), (390,844,'mobile-grid.png'), (430,932,'mobile-grid-wide.png')]:
+        check("[...document.querySelectorAll('.ig-media img')].every(img=>img.complete && img.naturalWidth>=1280)", 'eight local licensed photos load at full demo resolution')
+        for width, height, filename in [(1440,1000,'desktop-eight-photos.png'), (390,844,'mobile-grid.png'), (430,932,'mobile-grid-wide.png')]:
             command('Emulation.setDeviceMetricsOverride', {'width': width, 'height': height, 'deviceScaleFactor': 1, 'mobile': width < 600})
             evaluate('window.scrollTo(0,0)')
             settle()
