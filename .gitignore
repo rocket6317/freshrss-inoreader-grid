@@ -1,0 +1,23 @@
+# Local FreshRSS data and deployment artefacts never belong in a public release.
+backups/
+data/
+publish/
+work/
+outputs/
+config.php
+.env
+.env.*
+*.sqlite*
+*.db
+*.log
+*.tar
+*.tar.gz
+*.zip
+*.pem
+*.key
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+vendor/
+.DS_Store
