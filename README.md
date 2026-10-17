@@ -2,7 +2,7 @@
 
 A standalone FreshRSS extension that turns **Normal view** into an image-card grid with a focused article reader. Inspired by Inoreader, built with vanilla JavaScript and CSS, and tested against **FreshRSS 1.30.1**.
 
-![Desktop grid with fictional articles and illustrative stock photos](docs/screenshots/desktop.png)
+![Desktop grid with fictional articles and illustrative stock photos](docs/screenshots/desktop-grid.png)
 
 ## Features
 
