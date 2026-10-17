@@ -2,7 +2,7 @@
 
 A standalone FreshRSS extension that turns **Normal view** into an image-card grid with a focused article reader. Inspired by Inoreader, built with vanilla JavaScript and CSS, and tested against **FreshRSS 1.30.1**.
 
-![Desktop grid with synthetic demo articles](docs/screenshots/desktop.png)
+![Desktop grid with fictional articles and illustrative stock photos](docs/screenshots/desktop.png)
 
 ## Features
 
@@ -18,9 +18,9 @@ A standalone FreshRSS extension that turns **Normal view** into an image-card gr
 - Neutral monogram artwork for image-less articles.
 - Native pagination and dynamically loaded articles, without a framework or build step.
 
-<img src="docs/screenshots/mobile-reader.png" alt="Mobile reader displaying a synthetic demo article" width="300">
+<img src="docs/screenshots/mobile-grid.png" alt="Mobile card list at 390 pixels wide" width="260"> <img src="docs/screenshots/mobile-grid-wide.png" alt="Two-column mobile card list at 430 pixels wide" width="286"> <img src="docs/screenshots/mobile-reader.png" alt="Full-screen mobile article reader" width="260">
 
-Screenshots contain generated demo content, not personal feeds or account data.
+Mobile card lists at two widths, followed by the article reader. Screenshots use fictional articles and four illustrative stock photos. See [photo credits and demo details](docs/demo/README.md). No personal feeds or account data are shown.
 
 ## Requirements
 
@@ -91,7 +91,7 @@ The implementation uses FreshRSS's `entry_before_display` hook, native article-o
 - Cards use existing image URLs and send no page referrer. Those image hosts can still receive ordinary browser requests.
 - Read/bookmark operations continue through the current FreshRSS installation and its native CSRF handling.
 - AI summaries are never triggered automatically. An existing summary extension can still contact its configured provider when you explicitly use it.
-- This repository contains extension source and synthetic test fixtures only. Local backups, user CSS/JS, account data, logs and credentials are excluded.
+- This repository contains extension source, fictional test/demo articles and credited stock photos. Local backups, user CSS/JS, account data, logs and credentials are excluded.
 
 ## Disable or uninstall
 
@@ -125,7 +125,7 @@ python3 -m venv .venv
 
 Set `FRESHRSS_CONTAINER` or `CHROMIUM_BINARY` if your container/executable has a different name. The browser test reads the container's native JavaScript and theme files; it does **not** read user configuration, custom CSS or actual feed contents. A localhost fixture serves synthetic articles, state responses are mocked, and synthetic publisher image requests are fulfilled locally.
 
-Coverage includes read/bookmark request handling, dynamic articles, modal DOM identity, scroll/focus restoration, sidebar controls, touch gestures, mobile layout, image resolution and error fallback. Pass `--screenshots` to regenerate the demo screenshots from those fixtures.
+Coverage includes read/bookmark request handling, dynamic articles, modal DOM identity, scroll/focus restoration, sidebar controls, touch gestures, mobile layout, image resolution and error fallback. Pass `--screenshots` to regenerate screenshots from the separate [editorial demo](docs/demo/README.md) after the tests pass.
 
 ## Known limits
 
@@ -136,4 +136,4 @@ Coverage includes read/bookmark request handling, dynamic articles, modal DOM id
 
 ## Licence
 
-[MIT](LICENSE). This is an independent community extension, unaffiliated with Inoreader or FreshRSS.
+Extension code and original demo text: [MIT](LICENSE). Bundled stock photos and photographic material in screenshots retain the [Pexels licence](https://www.pexels.com/license/); see [photo credits](docs/demo/README.md). This is an independent community extension, unaffiliated with Inoreader or FreshRSS.

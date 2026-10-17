@@ -107,6 +107,24 @@ assets = {
 <nav id="nav_entries"><button class="previous_entry">Left</button><button class="up">Up</button><button class="next_entry">Right</button></nav>
 </body></html>''')
 }
+# Editorial screenshots are separate from the deliberately minimal test fixture.
+if '--screenshots' in sys.argv:
+    demo = ROOT / 'docs/demo'
+    demo_core = setup[:setup.index('function article(id)')] + native
+    assets['/demo-core.js'] = ('text/javascript', demo_core.encode())
+    assets['/demo.js'] = ('text/javascript', (
+        'window.demoArticles=' + (demo / 'articles.json').read_text() + ';\n' +
+        (demo / 'demo.js').read_text()).encode())
+    for photo in (demo / 'images').glob('*.jpg'):
+        assets['/demo/images/' + photo.name] = ('image/jpeg', photo.read_bytes())
+    assets['/demo'] = ('text/html', assets['/'][1]
+        .replace(b'<script defer src="/native.js"></script>',
+                 b'<script defer src="/demo-core.js"></script><script defer src="/demo.js"></script>')
+        .replace(b'<button>Feeds</button>', b'<button aria-label="Open feed navigation">&#9776;</button>')
+        .replace(b'<button class="btn btn-important fixture-native-action">Action</button>',
+                 b'<span class="demo-label">8 stories &middot; Editorial demo</span>')
+        .replace(b'</head>', b'<style>.nav_menu {display:flex;align-items:center;gap:18px;min-height:60px;box-sizing:border-box}.demo-label {margin-left:auto;font:12px system-ui;opacity:.65;padding-right:12px}.fixture-native-label {font:650 17px system-ui}.nav_menu #nav_menu_toggle_aside {position:static!important;width:44px;flex:0 0 44px;margin:0}.nav_menu>.fixture-native-label {position:static!important;margin:0}#nav_menu_toggle_aside button {font-size:20px;min-width:44px;min-height:44px}@media(max-width:600px){.demo-label{font-size:10px}.nav_menu{gap:12px}}</style></head>'))
+
 assets['/late'] = (assets['/'][0], assets['/'][1].replace(
     b'<script defer src="/native.js"></script><script defer src="/grid.js"></script>',
     b'<script defer src="/grid.js"></script><script async src="/native-late.js"></script>'))
@@ -219,7 +237,6 @@ try:
     check("getComputedStyle(document.body).backgroundColor==='rgb(25, 25, 25)' && getComputedStyle(document.querySelector('.flux')).backgroundColor==='rgb(37, 37, 37)' && getComputedStyle(document.querySelector('.ig-source')).color==='rgb(160, 160, 160)' && getComputedStyle(document.querySelector('.fixture-native-action')).backgroundColor==='rgb(58, 58, 58)'", 'neutral grey palette renders on surfaces, accents and native actions')
     check("getComputedStyle(document.querySelector('#stream')).gridTemplateColumns.split(' ').length===4", 'four desktop columns with the native FreshRSS theme')
     check("document.documentElement.scrollWidth<=innerWidth", 'desktop has no horizontal overflow')
-    screenshot('desktop.png')
     check("!context.auto_mark_scroll && !context.auto_remove_article", 'page-local scroll/removal protection')
     evaluate("window.scrollTo(0,700); window.beforeY=scrollY; window.contentNode=document.querySelector('#flux_9 > .flux_content'); document.querySelector('#flux_9 .ig-card').click()")
     settle()
@@ -271,8 +288,6 @@ try:
         check("getComputedStyle(document.querySelector('#nav_entries')).display==='none'", f'{width}px native bottom arrow bar stays hidden despite mobile theme override')
         evaluate("document.querySelector('#flux_1 .ig-card').click()")
         settle()
-        if width == 390:
-            screenshot('mobile-reader.png')
         if width <= 600:
             check("Math.abs(document.querySelector('dialog').getBoundingClientRect().width-innerWidth)<2 && Math.abs(document.querySelector('dialog').getBoundingClientRect().height-innerHeight)<2", f'{width}px full-screen reader')
         check("Array.from(document.querySelectorAll('dialog .ig-control')).every(n=>n.getBoundingClientRect().height>=44)", f'{width}px touch target sizes')
@@ -402,6 +417,29 @@ try:
             break
         time.sleep(.05)
     check("document.querySelectorAll('.ig-card').length===24", 'initialisation when asynchronous native core arrives late')
+    if '--screenshots' in sys.argv:
+        command('Fetch.disable')
+        command('Network.enable')
+        command('Network.setBlockedURLs', {'urls': ['https://*', 'http://example.invalid/*']})
+        command('Emulation.setDeviceMetricsOverride', {'width': 1440, 'height': 1000, 'deviceScaleFactor': 1, 'mobile': False})
+        command('Page.navigate', {'url': f'http://127.0.0.1:{server.server_port}/demo'})
+        for _ in range(100):
+            if evaluate("document.querySelectorAll('.ig-card').length===8"):
+                break
+            time.sleep(.05)
+        check("document.querySelectorAll('.ig-card').length===8", 'editorial demo uses eight fictional stories')
+        evaluate("Promise.all([...document.images].map(img=>{img.loading='eager';return img.decode().catch(()=>{});})).then(()=>document.fonts.ready)")
+        check("[...document.querySelectorAll('.ig-media img')].every(img=>img.complete && img.naturalWidth>=1280)", 'four local licensed photos load at full demo resolution')
+        for width, height, filename in [(1440,1000,'desktop.png'), (390,844,'mobile-grid.png'), (430,932,'mobile-grid-wide.png')]:
+            command('Emulation.setDeviceMetricsOverride', {'width': width, 'height': height, 'deviceScaleFactor': 1, 'mobile': width < 600})
+            evaluate('window.scrollTo(0,0)')
+            settle()
+            screenshot(filename)
+        command('Emulation.setDeviceMetricsOverride', {'width': 390, 'height': 844, 'deviceScaleFactor': 1, 'mobile': True})
+        evaluate("document.querySelector('#flux_1 .ig-card').click()")
+        settle()
+        check("document.querySelector('dialog[open]') && document.documentElement.scrollWidth<=innerWidth", 'editorial mobile reader opens without overflow')
+        screenshot('mobile-reader.png')
     assert not errors, errors
     print('PASS no browser JavaScript exceptions', flush=True)
 finally:
