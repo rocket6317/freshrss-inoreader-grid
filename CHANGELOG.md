@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.2 — 2026-10-20
+
+- Refine desktop/mobile cards with softer borders, tighter spacing, mixed-case source labels and lighter headline weight at the existing sizes.
+- Use neutral-grey text and saved states with an understated charcoal reader toolbar.
+- Ease image dimming to 80% brightness and 95% saturation, retaining glare reduction with more natural colour.
+- Limit hover styling to devices that support hover and provide direct touch press feedback.
+
 ## 1.0.1 — 2026-10-20
 
 - Mobile reader swipes respond to shorter deliberate drags and quick rightward flicks, with a slightly wider left-edge start area and earlier gesture feedback.

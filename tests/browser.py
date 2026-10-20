@@ -235,8 +235,8 @@ try:
             break
         time.sleep(.05)
     check("document.querySelectorAll('.ig-card').length===24", 'initial article enhancement')
-    check("getComputedStyle(document.querySelector('.ig-title')).color==='rgb(159, 166, 174)' && getComputedStyle(document.querySelector('.fixture-native-label')).color==='rgb(159, 166, 174)'", 'muted text actually renders on cards and native navigation')
-    check("getComputedStyle(document.body).backgroundColor==='rgb(25, 25, 25)' && getComputedStyle(document.querySelector('.flux')).backgroundColor==='rgb(37, 37, 37)' && getComputedStyle(document.querySelector('.ig-source')).color==='rgb(160, 160, 160)' && getComputedStyle(document.querySelector('.fixture-native-action')).backgroundColor==='rgb(58, 58, 58)'", 'neutral grey palette renders on surfaces, accents and native actions')
+    check("getComputedStyle(document.querySelector('.ig-title')).color==='rgb(168, 168, 168)' && getComputedStyle(document.querySelector('.fixture-native-label')).color==='rgb(168, 168, 168)'", 'muted text actually renders on cards and native navigation')
+    check("getComputedStyle(document.body).backgroundColor==='rgb(25, 25, 25)' && getComputedStyle(document.querySelector('.flux')).backgroundColor==='rgb(36, 36, 36)' && getComputedStyle(document.querySelector('.ig-source')).color==='rgb(160, 160, 160)' && getComputedStyle(document.querySelector('.fixture-native-action')).backgroundColor==='rgb(58, 58, 58)'", 'neutral grey palette renders on surfaces, accents and native actions')
     check("getComputedStyle(document.querySelector('#stream')).gridTemplateColumns.split(' ').length===4", 'four desktop columns with the native FreshRSS theme')
     check("document.documentElement.scrollWidth<=innerWidth", 'desktop has no horizontal overflow')
     check("!context.auto_mark_scroll && !context.auto_remove_article", 'page-local scroll/removal protection')
@@ -244,7 +244,7 @@ try:
     settle()
     check("document.querySelector('dialog').open && contentNode===document.querySelector('dialog .flux_content')", 'modal uses original article DOM')
     check("document.querySelector('dialog').closest('.flux').id==='flux_9'", 'native article ancestry retained')
-    check("['h1.title a','.text h2','.text p'].every(s=>getComputedStyle(document.querySelector('dialog '+s)).color==='rgb(159, 166, 174)')", 'muted text actually renders on reader titles, native headings and article text')
+    check("['h1.title a','.text h2','.text p'].every(s=>getComputedStyle(document.querySelector('dialog '+s)).color==='rgb(168, 168, 168)')", 'muted text actually renders on reader titles, native headings and article text')
     check("document.querySelector('dialog .text img').getAttribute('src')==='/art.svg'", 'native lazy media loading')
     evaluate("document.querySelector('dialog .ai-summary-btn').click()")
     check("document.querySelector('dialog .summary-state').textContent==='Summary updated'", 'existing delegated extension button remains functional')
@@ -377,7 +377,7 @@ try:
     check("document.querySelector('#flux_26 .ig-media img').src.includes('/article123.ece/ALTERNATES/s1200f/')", 'Echo card selects 1200px version across incoming/crop aliases, skipping logos and unrelated images')
     evaluate("document.querySelector('#flux_26 .ig-card').click()")
     settle()
-    check("document.querySelector('dialog .fixture-hero').src.includes('/s1200f/') && getComputedStyle(document.querySelector('dialog .fixture-hero')).filter==='brightness(0.72) saturate(0.85)'", 'reader upgrades matching Echo image and retains dimming')
+    check("document.querySelector('dialog .fixture-hero').src.includes('/s1200f/') && getComputedStyle(document.querySelector('dialog .fixture-hero')).filter==='brightness(0.8) saturate(0.95)'", 'reader upgrades matching Echo image and retains dimming')
     evaluate("document.querySelector('dialog').close()")
     settle()
     evaluate("""
@@ -449,7 +449,7 @@ try:
         check("new Set([...document.querySelectorAll('.ig-media img')].map(img=>img.src)).size===8", 'each editorial card uses a different photo')
         evaluate("Promise.all([...document.images].map(img=>{img.loading='eager';return img.decode().catch(()=>{});})).then(()=>document.fonts.ready)")
         check("[...document.querySelectorAll('.ig-media img')].every(img=>img.complete && img.naturalWidth>=1280)", 'eight local licensed photos load at full demo resolution')
-        for width, height, filename in [(1440,1000,'desktop-eight-photos.png'), (390,844,'mobile-grid.png'), (430,932,'mobile-grid-wide.png')]:
+        for width, height, filename in [(1440,1000,'desktop-neutral.png'), (390,844,'mobile-grid-neutral.png'), (430,932,'mobile-grid-wide-neutral.png')]:
             command('Emulation.setDeviceMetricsOverride', {'width': width, 'height': height, 'deviceScaleFactor': 1, 'mobile': width < 600})
             evaluate('window.scrollTo(0,0)')
             settle()
@@ -458,7 +458,7 @@ try:
         evaluate("document.querySelector('#flux_1 .ig-card').click()")
         settle()
         check("document.querySelector('dialog[open]') && document.documentElement.scrollWidth<=innerWidth", 'editorial mobile reader opens without overflow')
-        screenshot('mobile-reader.png')
+        screenshot('mobile-reader-neutral.png')
     assert not errors, errors
     print('PASS no browser JavaScript exceptions', flush=True)
 finally:
