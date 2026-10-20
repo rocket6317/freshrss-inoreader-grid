@@ -236,7 +236,7 @@ try:
         time.sleep(.05)
     check("document.querySelectorAll('.ig-card').length===24", 'initial article enhancement')
     check("getComputedStyle(document.querySelector('.ig-title')).color==='rgb(168, 168, 168)' && getComputedStyle(document.querySelector('.fixture-native-label')).color==='rgb(168, 168, 168)'", 'muted text actually renders on cards and native navigation')
-    check("getComputedStyle(document.body).backgroundColor==='rgb(17, 17, 17)' && getComputedStyle(document.querySelector('.flux')).backgroundColor==='rgb(36, 36, 36)' && getComputedStyle(document.querySelector('.ig-source')).color==='rgb(160, 160, 160)' && getComputedStyle(document.querySelector('.fixture-native-action')).backgroundColor==='rgb(58, 58, 58)'", 'neutral grey palette renders on surfaces, accents and native actions')
+    check("getComputedStyle(document.body).backgroundColor==='rgb(17, 17, 17)' && getComputedStyle(document.querySelector('.flux')).backgroundColor==='rgb(24, 24, 24)' && getComputedStyle(document.querySelector('.ig-source')).color==='rgb(160, 160, 160)' && getComputedStyle(document.querySelector('.fixture-native-action')).backgroundColor==='rgb(58, 58, 58)'", 'neutral grey palette renders on surfaces, accents and native actions')
     check("getComputedStyle(document.querySelector('#stream')).gridTemplateColumns.split(' ').length===4", 'four desktop columns with the native FreshRSS theme')
     check("document.documentElement.scrollWidth<=innerWidth", 'desktop has no horizontal overflow')
     check("!context.auto_mark_scroll && !context.auto_remove_article", 'page-local scroll/removal protection')

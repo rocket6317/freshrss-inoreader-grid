@@ -15,7 +15,7 @@ This repository is a standalone **FreshRSS 1.30.1 user extension**. Read `README
 ## Agreed interface
 
 - Desktop four-column grid, with intermediate three/two columns and one column on narrow phones; full headlines, feed names, dates and read/saved status.
-- Page background `#111111`, neutral charcoal surfaces and grey accents, softened neutral-grey text, understated borders and toolbar, no bright blue or gold accent. Source labels use mixed case; card headline sizes remain unchanged. Current dark-mode image filter is `brightness(.85)`; images are not rewritten.
+- Page background `#111111`, subtly lighter card background `#181818` with `#292929` edges, neutral charcoal reader/sidebar surfaces and grey accents, softened neutral-grey text, understated borders and toolbar, no bright blue or gold accent. Source labels use mixed case; card headline sizes remain unchanged. Current dark-mode image filter is `brightness(.85)`; images are not rewritten.
 - Card headline sizes: desktop 15px, at most 600px wide 14px, at most 420px wide 16px. Preserve these choices unless the requested change concerns typography.
 - Collapsed feed sidebar with a reachable explicit close control and Escape support.
 - Desktop centred reader; mobile full-screen reader with safe-area padding and touch-sized controls. A rightward swipe starting within 56px of the left edge closes the mobile reader. Short quick flicks are recognised separately from deliberate drags; keep the distance, speed and horizontal-intent safeguards. Vertical scrolling, interactive controls, text selection, multiple fingers and horizontal code/table scrolling must remain usable.

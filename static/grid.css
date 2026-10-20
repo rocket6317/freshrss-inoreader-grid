@@ -2,6 +2,8 @@
 html.ig-enabled {
 	--ig-bg: #f3f5f8;
 	--ig-surface: #fff;
+	--ig-card-bg: var(--ig-surface);
+	--ig-card-line: var(--ig-line);
 	--ig-toolbar-bg: #f7f7f7;
 	--ig-ink: #202b3b;
 	--ig-muted: #778293;
@@ -70,9 +72,9 @@ html.ig-enabled #stream > .flux.ig-ready {
 	height: auto !important;
 	margin: 0 !important;
 	padding: 0 !important;
-	border: 1px solid var(--ig-line) !important;
+	border: 1px solid var(--ig-card-line) !important;
 	border-radius: 12px;
-	background: var(--ig-surface) !important;
+	background: var(--ig-card-bg) !important;
 	box-shadow: 0 4px 16px #0000000c;
 	transition: box-shadow .18s, border-color .18s;
 }
@@ -236,12 +238,12 @@ html.ig-enabled #nav_entries { display: none !important; }
 }
 /* Match an explicitly dark FreshRSS theme, as well as automatic system dark mode. */
 html.ig-enabled:is(.theme_Alternative-Dark, .theme_Dark, .theme_Dark-pink, .theme_Nord, .darkMode_yes) {
-	--ig-bg: #111111; --ig-surface: #242424; --ig-toolbar-bg: #202020; --ig-ink: #a8a8a8; --ig-muted: #969696; --ig-line: #353535; --ig-accent: #a0a0a0; color-scheme: dark;
+	--ig-bg: #111111; --ig-surface: #242424; --ig-card-bg: #181818; --ig-card-line: #292929; --ig-toolbar-bg: #202020; --ig-ink: #a8a8a8; --ig-muted: #969696; --ig-line: #353535; --ig-accent: #a0a0a0; color-scheme: dark;
 	--font-color-light: var(--ig-ink);
 }
 @media (prefers-color-scheme: dark) {
 	html.ig-enabled.darkMode_auto {
-		--ig-bg: #111111; --ig-surface: #242424; --ig-toolbar-bg: #202020; --ig-ink: #a8a8a8; --ig-muted: #969696; --ig-line: #353535; --ig-accent: #a0a0a0; color-scheme: dark;
+		--ig-bg: #111111; --ig-surface: #242424; --ig-card-bg: #181818; --ig-card-line: #292929; --ig-toolbar-bg: #202020; --ig-ink: #a8a8a8; --ig-muted: #969696; --ig-line: #353535; --ig-accent: #a0a0a0; color-scheme: dark;
 		--font-color-light: var(--ig-ink);
 	}
 }

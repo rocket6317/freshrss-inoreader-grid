@@ -2,7 +2,7 @@
   "name": "Inoreader Grid",
   "author": "InoreaderGrid contributors",
   "description": "Image cards and an accessible modal reader using FreshRSS native articles and controls.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "entrypoint": "InoreaderGrid",
   "type": "user",
   "license": "MIT"

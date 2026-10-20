@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.4 — 2026-10-20
+
+- Darken cards to #181818, just above the #111111 page background, with softer #292929 card borders.
+- Keep the reader/sidebar surfaces and image brightness unchanged.
+
 ## 1.0.3 — 2026-10-20
 
 - Set the dark page background to #111111, sampled from the supplied colour reference.
