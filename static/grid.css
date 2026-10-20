@@ -236,12 +236,12 @@ html.ig-enabled #nav_entries { display: none !important; }
 }
 /* Match an explicitly dark FreshRSS theme, as well as automatic system dark mode. */
 html.ig-enabled:is(.theme_Alternative-Dark, .theme_Dark, .theme_Dark-pink, .theme_Nord, .darkMode_yes) {
-	--ig-bg: #191919; --ig-surface: #242424; --ig-toolbar-bg: #202020; --ig-ink: #a8a8a8; --ig-muted: #969696; --ig-line: #353535; --ig-accent: #a0a0a0; color-scheme: dark;
+	--ig-bg: #111111; --ig-surface: #242424; --ig-toolbar-bg: #202020; --ig-ink: #a8a8a8; --ig-muted: #969696; --ig-line: #353535; --ig-accent: #a0a0a0; color-scheme: dark;
 	--font-color-light: var(--ig-ink);
 }
 @media (prefers-color-scheme: dark) {
 	html.ig-enabled.darkMode_auto {
-		--ig-bg: #191919; --ig-surface: #242424; --ig-toolbar-bg: #202020; --ig-ink: #a8a8a8; --ig-muted: #969696; --ig-line: #353535; --ig-accent: #a0a0a0; color-scheme: dark;
+		--ig-bg: #111111; --ig-surface: #242424; --ig-toolbar-bg: #202020; --ig-ink: #a8a8a8; --ig-muted: #969696; --ig-line: #353535; --ig-accent: #a0a0a0; color-scheme: dark;
 		--font-color-light: var(--ig-ink);
 	}
 }
@@ -251,7 +251,7 @@ html.ig-enabled:is(.theme_Alternative-Dark, .theme_Dark, .theme_Dark-pink, .them
 	--ig-fallback-start: #3a3a3a;
 	--ig-fallback-end: #282828;
 	--ig-media-glow: #ffffff0a;
-	--ig-image-filter: brightness(.80) saturate(.95);
+	--ig-image-filter: brightness(.85);
 	--contrast-background-color: #3a3a3a;
 	--contrast-background-color-hover: #484848;
 	--contrast-background-color-active: #303030;
@@ -268,7 +268,7 @@ html.ig-enabled:is(.theme_Alternative-Dark, .theme_Dark, .theme_Dark-pink, .them
 		--ig-fallback-start: #3a3a3a;
 		--ig-fallback-end: #282828;
 		--ig-media-glow: #ffffff0a;
-		--ig-image-filter: brightness(.80) saturate(.95);
+		--ig-image-filter: brightness(.85);
 		--contrast-background-color: #3a3a3a;
 		--contrast-background-color-hover: #484848;
 		--contrast-background-color-active: #303030;

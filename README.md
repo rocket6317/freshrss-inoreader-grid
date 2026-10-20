@@ -2,7 +2,7 @@
 
 A standalone FreshRSS extension that turns **Normal view** into an image-card grid with a focused article reader. Inspired by Inoreader, built with vanilla JavaScript and CSS, and tested against **FreshRSS 1.30.1**.
 
-![Desktop grid with fictional articles and illustrative stock photos](docs/screenshots/desktop-neutral.png)
+![Desktop grid with fictional articles and illustrative stock photos](docs/screenshots/desktop-charcoal.png)
 
 ## Features
 
@@ -18,7 +18,7 @@ A standalone FreshRSS extension that turns **Normal view** into an image-card gr
 - Neutral monogram artwork for image-less articles.
 - Native pagination and dynamically loaded articles, without a framework or build step.
 
-<img src="docs/screenshots/mobile-grid-neutral.png" alt="Mobile card list at 390 pixels wide" width="260"> <img src="docs/screenshots/mobile-grid-wide-neutral.png" alt="Two-column mobile card list at 430 pixels wide" width="286"> <img src="docs/screenshots/mobile-reader-neutral.png" alt="Full-screen mobile article reader" width="260">
+<img src="docs/screenshots/mobile-grid-charcoal.png" alt="Mobile card list at 390 pixels wide" width="260"> <img src="docs/screenshots/mobile-grid-wide-charcoal.png" alt="Two-column mobile card list at 430 pixels wide" width="286"> <img src="docs/screenshots/mobile-reader-charcoal.png" alt="Full-screen mobile article reader" width="260">
 
 Mobile card lists at two widths, followed by the article reader. Screenshots use fictional articles and eight illustrative stock photos. See [photo credits and demo details](docs/demo/README.md). No personal feeds or account data are shown.
 
@@ -71,7 +71,7 @@ While the grid is active, automatic **mark read on scroll** and **remove read ar
 
 ## Images and appearance
 
-Dark themes use neutral grey accents and softened text. Article images are displayed at **80% brightness and 95% saturation** in dark mode; their original files are not modified. Card headlines are smaller than reader headlines and wrap fully.
+Dark themes use a **#111111 page background**, neutral grey accents and softened text. Article images are displayed at **85% brightness with original saturation** in dark mode; their original files are not modified. Card headlines are smaller than reader headlines and wrap fully.
 
 The image selector compares supplied variants of the same photo, rather than replacing it with an unrelated larger image. It understands responsive width/density descriptors and selected publisher CDN asset patterns. It never invents a larger URL or scrapes extra article pages. Publisher originals can use more bandwidth than thumbnails.
 

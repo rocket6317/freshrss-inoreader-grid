@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.3 — 2026-10-20
+
+- Set the dark page background to #111111, sampled from the supplied colour reference.
+- Ease image dimming to 85% brightness and preserve original saturation for more natural photos.
+
 ## 1.0.2 — 2026-10-20
 
 - Refine desktop/mobile cards with softer borders, tighter spacing, mixed-case source labels and lighter headline weight at the existing sizes.

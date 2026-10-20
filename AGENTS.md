@@ -15,7 +15,7 @@ This repository is a standalone **FreshRSS 1.30.1 user extension**. Read `README
 ## Agreed interface
 
 - Desktop four-column grid, with intermediate three/two columns and one column on narrow phones; full headlines, feed names, dates and read/saved status.
-- Neutral charcoal surfaces and grey accents, softened neutral-grey text, understated borders and toolbar, no bright blue or gold accent. Source labels use mixed case; card headline sizes remain unchanged. Current dark-mode image filter is `brightness(.80) saturate(.95)`; images are not rewritten.
+- Page background `#111111`, neutral charcoal surfaces and grey accents, softened neutral-grey text, understated borders and toolbar, no bright blue or gold accent. Source labels use mixed case; card headline sizes remain unchanged. Current dark-mode image filter is `brightness(.85)`; images are not rewritten.
 - Card headline sizes: desktop 15px, at most 600px wide 14px, at most 420px wide 16px. Preserve these choices unless the requested change concerns typography.
 - Collapsed feed sidebar with a reachable explicit close control and Escape support.
 - Desktop centred reader; mobile full-screen reader with safe-area padding and touch-sized controls. A rightward swipe starting within 56px of the left edge closes the mobile reader. Short quick flicks are recognised separately from deliberate drags; keep the distance, speed and horizontal-intent safeguards. Vertical scrolling, interactive controls, text selection, multiple fingers and horizontal code/table scrolling must remain usable.
@@ -36,7 +36,7 @@ This repository is a standalone **FreshRSS 1.30.1 user extension**. Read `README
 - Browser integration: `python3 tests/browser.py` requires Docker, Chromium and `websocket-client`. Override `FRESHRSS_CONTAINER` and `CHROMIUM_BINARY` as needed. Only standard native FreshRSS assets are read; no accounts or real feeds are loaded, state requests are mocked and publisher image fixtures are fulfilled locally.
 - `python3 tests/browser.py --screenshots` runs the checks and then captures the separate editorial demo. Eight fictional articles use **eight distinct local stock photos**. The README shows desktop, one-column mobile, two-column mobile and mobile reader screenshots.
 - Photo sources and credits are in `docs/demo/README.md`. Code/original text are MIT; photos and photographic material in screenshots retain the Pexels licence. Do not relicense them as MIT. All story/publication names are fictional and photos are illustrative.
-- Desktop screenshot: `docs/screenshots/desktop-neutral.png`. Earlier image URLs displayed stale previews, so use a fresh descriptive filename when replacing a screenshot that remains cached.
+- Desktop screenshot: `docs/screenshots/desktop-charcoal.png`. Earlier image URLs displayed stale previews, so use a fresh descriptive filename when replacing a screenshot that remains cached.
 - GitHub Actions validates syntax and PHP integration against the FreshRSS 1.30.1 Docker image. Browser coverage currently runs locally.
 
 ## Verification limits
