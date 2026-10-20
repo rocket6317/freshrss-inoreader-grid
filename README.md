@@ -63,7 +63,7 @@ Reader and Global view keep their native presentation. There is no hardcoded acc
 
 Click a card to open the reader. Use its toolbar to save an article, mark it read/unread or open the original. Opening an article respects FreshRSS's existing automatic mark-on-open preference.
 
-Use **Left/Right arrows** or the toolbar buttons to navigate loaded articles. **Escape**, **×**, or a desktop backdrop click closes the reader. On mobile, swipe **right from just inside the reader's left edge**. Vertical scrolling, short gestures, multiple fingers, text selection and gestures on interactive controls do not dismiss it.
+Use **Left/Right arrows** or the toolbar buttons to navigate loaded articles. **Escape**, **×**, or a desktop backdrop click closes the reader. On mobile, swipe **right from just inside the reader's left edge**. Quick flicks can use a shorter distance than deliberate drags. Vertical or diagonal scrolling, tiny gestures, multiple fingers, text selection and gestures on interactive controls do not dismiss it.
 
 The sidebar starts collapsed each page. Use FreshRSS's navigation button to open it and **Close ×** or Escape to collapse it. Pagination remains native; previous/next navigation is limited to articles currently loaded into the page.
 

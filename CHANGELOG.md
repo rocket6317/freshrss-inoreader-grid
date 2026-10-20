@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1 — 2026-10-20
+
+- Mobile reader swipes respond to shorter deliberate drags and quick rightward flicks, with a slightly wider left-edge start area and earlier gesture feedback.
+- Preserve vertical and diagonal scrolling, controls, code/table scrolling, cancelled touches and short-drag safeguards.
+
 ## 1.0.0 — 2026-10-17
 
 Initial public release, tested against FreshRSS 1.30.1.

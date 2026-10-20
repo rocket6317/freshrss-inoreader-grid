@@ -209,10 +209,12 @@ try:
     def settle():
         evaluate('new Promise(resolve=>setTimeout(resolve,100))')
 
-    def gesture(points, cancel=False):
+    def gesture(points, cancel=False, hold=0):
         for index, (x, y) in enumerate(points):
             command('Input.dispatchTouchEvent', {'type': 'touchStart' if index == 0 else 'touchMove',
                 'touchPoints': [{'id': 1, 'x': x, 'y': y}]})
+        if hold:
+            time.sleep(hold)
         command('Input.dispatchTouchEvent', {'type': 'touchCancel' if cancel else 'touchEnd', 'touchPoints': []})
         settle()
 
@@ -322,6 +324,22 @@ try:
     evaluate("document.querySelector('.ig-reader-body').scrollTop=300")
     gesture([(12, 450), (45, 450), (100, 450), (160, 450)])
     check("!document.querySelector('dialog[open]') && swipeContent===document.querySelector('#flux_1 > .flux_content') && Math.abs(scrollY-swipeBeforeY)<2 && document.activeElement===document.querySelector('#flux_1 .ig-card')", 'rightward left-edge swipe closes scrolled reader and restores card, focus and grid scroll')
+    evaluate("document.querySelector('#flux_1 .ig-card').click()")
+    settle()
+    gesture([(52, 450), (108, 450)])
+    check("!document.querySelector('dialog[open]') && document.activeElement===document.querySelector('#flux_1 .ig-card')", 'quick short flick closes reader from the wider left-edge area')
+    evaluate("document.querySelector('#flux_1 .ig-card').click()")
+    settle()
+    gesture([(12, 450), (30, 450), (52, 450), (68, 450)], hold=.4)
+    check("document.querySelector('dialog').open && !document.querySelector('.ig-swiping')", 'short drag held before release does not count as a quick flick')
+    gesture([(12, 450), (28, 450), (56, 450), (88, 450)], hold=.4)
+    check("!document.querySelector('dialog[open]') && Math.abs(scrollY-swipeBeforeY)<2", 'deliberate shorter drag closes reader without needing flick speed')
+    evaluate("document.querySelector('#flux_1 .ig-card').click()")
+    settle()
+    gesture([(12, 450), (32, 470), (80, 510)])
+    check("document.querySelector('dialog').open", 'diagonal article scrolling does not become a flick dismissal')
+    evaluate("document.querySelector('dialog').close()")
+    settle()
     command('Emulation.setTouchEmulationEnabled', {'enabled': False})
     check("!document.querySelector('.aside').classList.contains('visible')", 'sidebar starts collapsed')
     evaluate("document.querySelector('#nav_menu_toggle_aside button').click()")

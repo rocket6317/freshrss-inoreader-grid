@@ -257,7 +257,7 @@
 				window.getSelection()?.isCollapsed === false) return;
 			const touch = event.touches[0];
 			const left = touch.clientX - dialog.getBoundingClientRect().left;
-			if (left < 0 || left > 44) return;
+			if (left < 0 || left > 56) return;
 			swipe = { id: touch.identifier, x: touch.clientX, y: touch.clientY, started: performance.now(), locked: false };
 		}, { passive: true });
 		dialog.addEventListener('touchmove', event => {
@@ -268,8 +268,8 @@
 			const dx = touch.clientX - swipe.x;
 			const dy = Math.abs(touch.clientY - swipe.y);
 			if (!swipe.locked) {
-				if (dx < -12 || dy > 12 && dy * 1.4 > dx) { resetSwipe(); return; }
-				if (dx < 12 || dx < dy * 1.4) return;
+				if (dx < -8 || dy > 8 && dy * 1.4 > dx) { resetSwipe(); return; }
+				if (dx < 8 || dx < dy * 1.4) return;
 				swipe.locked = true;
 				dialog.classList.add('ig-swiping');
 			}
@@ -278,10 +278,14 @@
 		dialog.addEventListener('touchend', event => {
 			if (!swipe) return;
 			const touch = Array.from(event.changedTouches).find(item => item.identifier === swipe.id);
+			const dx = touch ? touch.clientX - swipe.x : 0;
+			const elapsed = performance.now() - swipe.started;
+			// A quick flick should not need the full drag distance. Keep a minimum
+			// travel and horizontal intent so taps and article scrolling stay safe.
+			const flick = dx >= 48 && elapsed <= 280 && dx / Math.max(1, elapsed) >= .45;
 			const completed = touch && event.touches.length === 0 && swipe.locked &&
-				performance.now() - swipe.started < 1500 &&
-				touch.clientX - swipe.x >= Math.min(110, dialog.clientWidth * .24) &&
-				Math.abs(touch.clientY - swipe.y) < (touch.clientX - swipe.x) * .65;
+				elapsed < 1500 && (dx >= Math.min(80, dialog.clientWidth * .18) || flick) &&
+				Math.abs(touch.clientY - swipe.y) < dx * .65;
 			resetSwipe();
 			if (completed) {
 				if (event.cancelable) event.preventDefault();

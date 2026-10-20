@@ -18,7 +18,7 @@ This repository is a standalone **FreshRSS 1.30.1 user extension**. Read `README
 - Neutral charcoal surfaces and grey accents, softened text, no bright blue accent. Current dark-mode image filter is `brightness(.72) saturate(.85)`; images are not rewritten.
 - Card headline sizes: desktop 15px, at most 600px wide 14px, at most 420px wide 16px. Preserve these choices unless the requested change concerns typography.
 - Collapsed feed sidebar with a reachable explicit close control and Escape support.
-- Desktop centred reader; mobile full-screen reader with safe-area padding and touch-sized controls. A rightward swipe starting near the left edge closes the mobile reader. Vertical scrolling, interactive controls, text selection, multiple fingers and horizontal code/table scrolling must remain usable.
+- Desktop centred reader; mobile full-screen reader with safe-area padding and touch-sized controls. A rightward swipe starting within 56px of the left edge closes the mobile reader. Short quick flicks are recognised separately from deliberate drags; keep the distance, speed and horizontal-intent safeguards. Vertical scrolling, interactive controls, text selection, multiple fingers and horizontal code/table scrolling must remain usable.
 - Hide FreshRSS's native bottom arrow bar while enhanced. Preserve previous/next, save, read/unread, original link and close controls in the reader toolbar.
 - Select the largest **supplied variant of the same image**, including enclosure, responsive, lazy and picture metadata. Publisher matching includes Echo/Globe patterns. Keep working smaller-image fallbacks; do not invent CDN URLs, scrape publishers, or choose an unrelated larger image. Image-less feeds retain monogram artwork.
 
